@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_gravity="left"
+        android:textColor="@color/blue"
+        android:text="Google voice with Lex service" />
+
+    <!--include
+        android:id="@+id/voiceInterface"
+        layout="@layout/voice_component"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:paddingTop="20dp"
+        android:text="Click button to start" /-->
+
+    <!--Button
+        android:id="@+id/start_reg_mix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:text="press and speak" /-->
+
+    <ImageButton
+        android:id="@+id/start_reg_mix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/voice_recoder" />
+
+    <!--TextView
+        android:id="@+id/speechTitle"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:textColor="@color/blue"
+        android:layout_gravity="left"
+        android:text="You have said:"/>
+    <TextView
+        android:id="@+id/speech"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/answerTitle"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:textColor="@color/blue"
+        android:layout_gravity="left"
+        android:text="Search result:"/>
+    <TextView
+        android:id="@+id/answer"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" /-->
+</LinearLayout>
