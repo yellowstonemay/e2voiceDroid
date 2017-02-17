@@ -6,6 +6,8 @@ public class TextMessage {
     private String from;
     private String timeStamp;
 
+    private ResponseCard responseCard;
+
     public TextMessage(final String message, final String from, final String timeStamp) {
         this.message = message;
         this.from = from;
@@ -34,5 +36,13 @@ public class TextMessage {
 
     public void setTimeStamp(String timeStamp) {
         this.timeStamp = timeStamp;
+    }
+
+    public ResponseCard getResponseCard() {
+        return responseCard;
+    }
+
+    public void setResponseCard(ResponseCard responseCard) {
+        this.responseCard = responseCard;
     }
 }

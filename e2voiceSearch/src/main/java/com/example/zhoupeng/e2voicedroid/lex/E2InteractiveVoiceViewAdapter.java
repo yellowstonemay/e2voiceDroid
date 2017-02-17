@@ -49,6 +49,8 @@ public class E2InteractiveVoiceViewAdapter
     private final ClientConfiguration clientConfiguration;
 
     private boolean hasInteractionError;
+    private boolean needTerminateConversation;
+
     // Dialog states.
     public final static int STATE_NOT_READY = 0;
     public final static int STATE_READY = 1;
@@ -91,12 +93,13 @@ public class E2InteractiveVoiceViewAdapter
                 state = STATE_READY;
                 micButton.animateNone();
 
-                if(!hasInteractionError) {
-                    if (voiceListener != null)
-                        voiceListener.onFullFilled();
+                if(!hasInteractionError && !needTerminateConversation) {
                     autoStartNewConversation();
+                }else{
+                    voiceListener.onAudioPlayBackCompleted(needTerminateConversation);
                 }
                 hasInteractionError = false;
+                needTerminateConversation = false;
             }
         }
     }
@@ -131,7 +134,9 @@ public class E2InteractiveVoiceViewAdapter
             // The request has been fulfilled, the bot is ready for a new dialog.
             state = STATE_READY;
             this.continuation = null;
-
+            if (voiceListener != null) {
+                needTerminateConversation = voiceListener.onFullFilled(response);
+            }
         } else {
             this.continuation = continuation;
         }
@@ -199,6 +204,7 @@ public class E2InteractiveVoiceViewAdapter
             state = STATE_READY;
 
             autoStartNewConversation();
+//            textInForAudioOut("chase Speech time out");
 
         } else if (e instanceof MaxSpeechTimeOutException) {
             Log.e(TAG, "E2InteractiveVoiceViewAdapter: Speech time out", e);
@@ -227,6 +233,33 @@ public class E2InteractiveVoiceViewAdapter
                 state = STATE_READY;
                 break;
         }
+    }
+
+    public void textInForAudioOut(String text)
+    {
+        lexInteractionClient.textInForAudioOut(text, sessionAttributes);
+    }
+
+    public void welcomStartNewConversation()
+    {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(state == STATE_READY)
+                {
+                    if (shouldInitialize) {
+                        init();
+                    }
+
+                    if (sessionAttributes == null) {
+                        sessionAttributes = new HashMap<String, String>();
+                    }
+
+                    textInForAudioOut("Hello Chase");
+                }
+            }
+        }, 200);
     }
 
     public void autoStartNewConversation()
@@ -309,6 +342,12 @@ public class E2InteractiveVoiceViewAdapter
      */
     private void startListening(Map<String, String> sessionParameters) {
         state = STATE_LISTENING;
+
+        sessionParameters.remove("command");
+        sessionParameters.remove("additionInfo");
+        sessionParameters.remove("web");
+        sessionParameters.remove("video");
+
         lexInteractionClient.audioInForAudioOut(sessionParameters);
         if(voiceListener!=null)
             voiceListener.onStartListening(state);
@@ -331,6 +370,18 @@ public class E2InteractiveVoiceViewAdapter
      */
     public void cancel() {
         reset();
+    }
+
+    public void doLateCancelConversation()
+    {
+        cancel();
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                cancel();
+            }
+        }, 100);
     }
 
     /**

@@ -1,94 +1,76 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
     android:keepScreenOn="true"
+    android:background="@color/grey_300"
     android:id="@+id/main_layout">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/main_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:layout_gravity="left"
-        android:textColor="@color/blue"
-        android:text="Chase E2 Chat Bot" />
-
-    <!--include
-        android:id="@+id/voiceInterface"
-        layout="@layout/voice_component"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        />
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text=""
+        android:background="@color/grey_500"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/chaselogo32"/>
+    </android.support.v7.widget.Toolbar>
 
     <TextView
-        android:id="@+id/welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/answer"
         android:textSize="20sp"
+        android:textColor="@color/red"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingTop="20dp"
-        android:text="Click button to start" /-->
+        android:background="@drawable/chase_poster_01"
+        android:layout_below="@+id/sub_title"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/sub_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/colorPrimary"
+        android:text="Virtual assistant from anywhere"
+        android:layout_below="@+id/main_title"
+        android:layout_alignParentStart="true" />
 
     <!--Button
-        android:id="@+id/goto_reg_google"
+        android:id="@+id/demo_button_video"
+        android:text="Demo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Google cloudsearch" />
-
-    <Button
-        android:id="@+id/goto_reg_lex_mix"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Lex with google Voice" /-->
-
-    <!--Button
-        android:id="@+id/goto_reg_lex_mix_polly"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Lex/Polly with google Voice" /-->
+        android:layout_alignTop="@+id/goto_reg_lex_polly"
+        android:layout_alignStart="@+id/goto_reg_lex_polly"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="54dp" /-->
 
     <Button
         android:id="@+id/goto_reg_lex_polly"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Start Conversation" />
-
-    <!--TextView
-        android:id="@+id/speechTitle"
-        android:textSize="15sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:textColor="@color/blue"
-        android:layout_gravity="left"
-        android:text="You have said:"/>
-    <TextView
-        android:id="@+id/speech"
-        android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" />
-
-    <TextView
-        android:id="@+id/answerTitle"
-        android:textSize="15sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:textColor="@color/blue"
-        android:layout_gravity="left"
-        android:text="Search result:"/>
-    <TextView
-        android:id="@+id/answer"
-        android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" /-->
-</LinearLayout>
+        android:text="Getting Started"
+        android:layout_marginBottom="74dp"
+        android:layout_marginEnd="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@id/answer"/>
+</RelativeLayout>

@@ -5,16 +5,27 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     tools:context="com.example.zhoupeng.e2voicedroid.Lex_polly"
-    android:keepScreenOn="true">
+    android:keepScreenOn="true"
+    android:id="@+id/activity_lex_polly">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/main_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:layout_gravity="left"
-        android:textColor="@color/blue"
-        android:text="Chase E2 Chat Bot" />
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:text=""
+        android:background="@color/grey_500"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/chaselogo32"/>
+    </android.support.v7.widget.Toolbar>
 
     <TextView
         android:id="@+id/helpText"

@@ -487,6 +487,8 @@ public class E2InteractiveVoiceView extends View {
 
         void onStartListening(int state);
 
-        void onFullFilled();
+        boolean onFullFilled(Response response);
+
+        void onAudioPlayBackCompleted(Boolean needTerminateConversation);
     }
 }
